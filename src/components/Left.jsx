@@ -46,7 +46,7 @@ const Left = ({ handleStepChange }) => {
         </button>
       </div>
       <div className="n-footer web">
-        ©2025 CC & BB <sub>Your balance buddy</sub>
+        ©2025 GIFTCARDCHECK <sub>Your balance buddy</sub>
       </div>
     </div>
   );
