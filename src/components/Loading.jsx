@@ -43,7 +43,7 @@ const Loading = ({ currentStep }) => {
         status.current.textContent = "Done!";
         setTimeout(() => {
           // Navigate to the next step
-          currentStep("No");
+          currentStep("Result");
           setTimeout(() => {
               window.location.href = "#result";
             }, 2);
