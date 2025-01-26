@@ -30,7 +30,7 @@ const Right = ({ currentStep, handleStepChange }) => {
       {currentStep === "Loading" && <Loading currentStep={changeStep} />}
       {currentStep === "Contact" && <Contact currentStep={changeStep} />}
       <div className="n-footer mobile">
-        ©2025 CC & BB <sub>Your balance buddy</sub>
+        ©2025 GIFTCARDCHECKER <sub>Your balance buddy</sub>
       </div>
     </div>
   );
