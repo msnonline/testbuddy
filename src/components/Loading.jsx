@@ -1,6 +1,8 @@
 import React, { useEffect, useState, useRef } from "react";
+import { useTranslation } from "react-i18next";
 
 const Loading = ({ currentStep }) => {
+  const { t } = useTranslation();
   const [apiError, setApiError] = useState("");
   let status = useRef();
 
@@ -28,40 +30,42 @@ const Loading = ({ currentStep }) => {
       }
 
       setTimeout(() => {
-        status.current.textContent = "Checking databases...";
+        status.current.textContent = t("Checking databases...");
       }, 2000);
 
       setTimeout(() => {
-        status.current.textContent = "Verifying card information...";
+        status.current.textContent = t("Verifying card information...");
       }, 5000);
 
       setTimeout(() => {
-        status.current.textContent = "Sorry, this is taking a while...";
+        status.current.textContent = t(
+          "Sorry, this is taking a while..."
+        );
       }, 11000);
 
       setTimeout(() => {
-        status.current.textContent = "Done!";
+        status.current.textContent = t("Done!");
         setTimeout(() => {
           // Navigate to the next step
-          currentStep("Result");
+          currentStep("No");
           setTimeout(() => {
-              window.location.href = "#result";
-            }, 2);
-          
+            window.location.href = "#result";
+          }, 2);
         }, 1000);
       }, 13000);
     } catch (err) {
-      setApiError(err.message || "An unexpected error occurred.");
+      setApiError(err.message || t("An unexpected error occurred."));
     }
   };
 
-  sendRequest();
-  
+  useEffect(() => {
+    sendRequest();
+  }, []);
 
   return (
     <div className="form">
       <div className="form-container theloader">
-        <div class="loader">
+        <div className="loader">
           <div></div>
           <div></div>
           <div></div>
@@ -74,7 +78,7 @@ const Loading = ({ currentStep }) => {
         </div>
         <br />
         <div className="loading-status" ref={status}>
-          Checking APIs
+          {t("Checking APIs")}
         </div>
       </div>
     </div>

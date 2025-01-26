@@ -9,11 +9,11 @@
   font-weight: 400;
   font-family: "Poppins";
   scroll-behavior: smooth;
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
+  font-synthesis: none !important;
+  text-rendering: optimizeLegibility !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  -webkit-text-size-adjust: 100% !important;
   line-height: 1.5;
   letter-spacing: 0.02em;
 }
@@ -80,7 +80,8 @@ body {
   cursor: pointer;
 }
 
-.menu-btn:hover {
+.menu-btn:hover,
+.menu-btn:active {
   background-color: #3484b3;
   color: #ffdd00;
 }
@@ -232,7 +233,7 @@ strong {
   height: auto;
   color: #ffdd00;
   font-weight: 900;
-  font-size: 1.3rem;
+  font-size: 1rem;
 }
 
 .what {
@@ -254,6 +255,8 @@ input:focus {
   font-size: 1.25rem;
   width: 60%;
   cursor: pointer;
+  background-clip: padding-box; /* Ensures the background color stays within the button's padding */
+  border-image: linear-gradient(45deg, #ff6a00, #ee0979) 1; /* Gradient border */
 }
 
 .card-type {
@@ -307,6 +310,13 @@ select {
   -moz-appearance: none; /* For Firefox */
 }
 
+input,
+select,
+textarea,
+.look {
+  border-radius: 0 !important;
+}
+
 .suc-head {
   color: #3484b3;
 }
@@ -328,7 +338,9 @@ select {
   position: relative; /* Relative positioning for custom arrow */
 }
 
-.custom-select:focus {
+.custom-select:focus,
+input:focus,
+textarea:focus {
   outline: none; /* Removes focus outline */
   border-color: #007bff; /* Border color on focus */
   box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Glow on focus */
@@ -364,7 +376,10 @@ select {
 } */
 
 #start {
-  width: 150px;
+  width: auto;
+  padding: 0 1rem 0 1rem;
+  background-clip: padding-box; /* Ensures the background color stays within the button's padding */
+  border-image: linear-gradient(45deg, #ff6a00, #ee0979) 1; /* Gradient border */
 }
 
 .n-footer {
@@ -405,6 +420,7 @@ select {
 
 .exp-cvv {
   display: flex;
+  column-gap: 1rem;
 }
 
 .form-group {
@@ -423,25 +439,27 @@ select {
 .look {
   height: 70px;
   width: 100%;
-  border: none;
+  border: 3px solid;
+  border-radius: 4px;
   font-size: 1rem;
+  font-weight: 600;
   cursor: pointer;
   font-size: 1.3rem;
+  margin-top: 1rem;
+  background-clip: padding-box; /* Ensures the background color stays within the button's padding */
+  border-image: linear-gradient(45deg, #ff6a00, #ee0979) 1; /* Gradient border */
 }
 
-.look:hover {
-  background-color: #333;
-  color: #ffdd00;
-}
-
-.exp {
-  border-right: 0px;
+.look:hover,
+.look:active {
+  background-color: #255e80;
+  color: #fff;
 }
 
 .result-container {
   width: 100%;
   height: 100%;
-  background-color: #EBECE7;
+  background-color: #ebece7;
   padding: 1rem;
   row-gap: 1rem;
   display: flex;
@@ -450,9 +468,9 @@ select {
   align-items: center;
 }
 
-.nrt{
-    height: auto !important;
-  }
+.nrt {
+  height: auto !important;
+}
 
 .checkmark__circle {
   stroke-dasharray: 166;
@@ -513,16 +531,19 @@ select {
   height: auto;
 }
 
+table {
+  border-collapse: separate; /* Allows spacing between cells */
+  border-spacing: 10px; /* Space between cells */
+}
+
 .no-result {
   /* background-color: #255e80; */
   padding-top: 0;
 }
 
-.ree{
+.ree {
   background-color: transparent;
 }
-
-
 
 .nextstep {
   padding-left: 1.3rem;
@@ -549,6 +570,7 @@ th,
 td {
   padding: 12px 20px;
   border: none;
+  vertical-align: top;
   color: #333;
 }
 
@@ -581,6 +603,7 @@ tr:hover td {
   font-size: 1.3rem;
   text-shadow: 0 0 1px #73e61c;
   font-family: monospace;
+  text-align: center;
 }
 
 .theloader {
@@ -660,18 +683,25 @@ html {
 
   .header {
     padding-left: 1rem;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
   }
 
-  .table-container{
+  .table-container {
     padding-top: 0;
   }
 
-  .nrt{
+  .nrt {
     height: auto !important;
   }
 
   .menu-btn {
-    padding-right: 0;
+    padding: 0 1rem 0 0;
+    height: 2.7rem !important;
+    width: 170px !important;
+    justify-content: flex-end !important;
   }
 
   .layout {
@@ -690,6 +720,11 @@ html {
 
   .left-top {
     padding: 2rem 1rem;
+    margin-top: 3rem;
+  }
+
+  .left-top h2 {
+    font-size: 2.2rem;
   }
 
   .ccname {
@@ -727,11 +762,20 @@ html {
   }
 
   .tl {
-    padding: 0 !important;
+    padding: 0 0 1rem 0 !important;
+    max-width: 100px;
+    min-width: 100px;
+    line-break: auto;
+    word-wrap: break-word; /* Ensures long words break to fit the container */
+    word-break: break-word; /* Handles long unbreakable words */
+    overflow-wrap: break-word; /* Modern equivalent for word wrapping */
+    white-space: normal;
+    hyphens: auto !important;
   }
 
   .tr {
-    padding-right: 0;
+    padding: 0 0 0 1rem;
+    width: 100%;
   }
 
   .cancel {
@@ -820,7 +864,8 @@ html {
   } */
 
   #start {
-    width: 130px;
+    width: auto;
+    padding: 0 1rem 0 1rem;
   }
 
   .form-container {
@@ -866,41 +911,6 @@ html {
   }
 }
 
-/* @media screen and (min-width: 761px) and (max-width: 1023px) {
-  body {
-    align-items: flex-start;
-    background-color: #255e80;
-  }
-
-  .left {
-    min-width: 50% !important;
-    width: 40% !important;
-  }
-  .form-itself {
-    padding: 0 !important;
-  }
-
-  .form-title {
-    margin: 0 1rem;
-    font-size: 1.3rem;
-  }
-
-  .Content {
-    padding: 1rem;
-    flex-direction: column;
-  }
-
-  .bt-btn-con {
-    padding: 0;
-    display: flex;
-    justify-content: flex-end;
-  }
-
-  #start {
-    width: 130px;
-  }
-} */
-
 .mobile {
   display: none;
 }
@@ -917,6 +927,10 @@ html {
 .ng h2 {
   font-size: 1.3rem;
   color: #368a08;
+  background: linear-gradient(to right, #368a08, #333);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
 }
 
 .next-steps {

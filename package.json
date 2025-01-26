@@ -13,8 +13,12 @@
     "@tailwindcss/forms": "^0.5.10",
     "@tailwindcss/typography": "^0.5.16",
     "axios": "^1.7.9",
+    "i18next": "^24.2.2",
+    "i18next-browser-languagedetector": "^8.0.2",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "react-i18next": "^15.4.0",
+    "react-translate": "^7.0.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.17.0",

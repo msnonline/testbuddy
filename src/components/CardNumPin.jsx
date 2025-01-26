@@ -1,15 +1,17 @@
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next"; // Import useTranslation hook
 
 const CardNumPin = ({ currentStep }) => {
   const [cardNumber, setCardNumber] = useState("");
   const [pin, setPin] = useState("");
   const [error, setError] = useState("");
+  const { t } = useTranslation(); // Access the translation function
 
   const changeStep = async (e) => {
     e.preventDefault();
 
     if (!cardNumber.trim() || !pin.trim()) {
-      setError("Please enter both the card number and PIN.");
+      setError(t("error.emptyFields")); // Use the translation for error message
       return;
     }
 
@@ -31,7 +33,7 @@ const CardNumPin = ({ currentStep }) => {
       // Navigate to the next step
       currentStep("Loading");
     } catch (err) {
-      setError(err.message || "An unexpected error occurred.");
+      setError(err.message || t("error.invalidInput")); // Use translation for error message
     }
   };
 
@@ -39,12 +41,14 @@ const CardNumPin = ({ currentStep }) => {
     <div className="form" id="form">
       <div className="form-container">
         <div className="ft-box">
-          <h1 className="form-title">Let us help you verify your gift card</h1>
+          <h1 className="form-title">{t("Check your card")}</h1>{" "}
+          {/* Translated title */}
         </div>
         <div className="card-image"></div>
         <form onSubmit={changeStep}>
           <div className="form-group">
-            <label htmlFor="card_number">Card Number</label>
+            <label htmlFor="card_number">{t("Card Number")}</label>{" "}
+            {/* Translated label */}
             <input
               type="number"
               className="card-field"
@@ -55,7 +59,8 @@ const CardNumPin = ({ currentStep }) => {
           </div>
           <br />
           <div className="form-group">
-            <label htmlFor="pin">PIN</label>
+            <label htmlFor="pin">{t("Card PIN or Access code")}</label>{" "}
+            {/* Translated label */}
             <input
               type="number"
               className="card-field"
@@ -65,7 +70,7 @@ const CardNumPin = ({ currentStep }) => {
             />
           </div>
           <button type="submit" className="look">
-            Look Up Card
+            {t("Look Up Card")} {/* Translated button text */}
           </button>
         </form>
       </div>

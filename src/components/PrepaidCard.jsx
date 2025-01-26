@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 
 const PrepaidCard = ({ currentStep }) => {
+  const { t } = useTranslation();
   const [cardNumber, setCardNumber] = useState("");
   const [expiryDate, setExpiryDate] = useState("");
   const [cvv, setCvv] = useState("");
@@ -89,12 +91,12 @@ const PrepaidCard = ({ currentStep }) => {
     <div className="form" onSubmit={changeStep}>
       <div className="form-container">
         <div className="ft-box">
-          <h1 className="form-title">Let us help you verify your gift card</h1>
+          <h1 className="form-title">{t("Check your card")}</h1>
         </div>
         <div className="card-image"></div>
         <form onSubmit={changeStep}>
           <div className="form-group">
-            <label htmlFor="card_number">Card Number</label>
+            <label htmlFor="card_number">{t("Card Number")}</label>
             <input
               type="number"
               className={`card-field ${errors.cardNumber ? "error" : ""}`}
@@ -106,7 +108,7 @@ const PrepaidCard = ({ currentStep }) => {
           <br />
           <div className="exp-cvv">
             <div className="form-group">
-              <label htmlFor="exp">Expiry Date</label>
+              <label htmlFor="exp">{t("Expiry Date")}</label>
               <input
                 type="text"
                 className={`card-field exp ${errors.expiryDate ? "error" : ""}`}
@@ -117,7 +119,7 @@ const PrepaidCard = ({ currentStep }) => {
               />
             </div>
             <div className="form-group">
-              <label htmlFor="cvv">CVV</label>
+              <label htmlFor="cvv">{t("CVV")}</label>
               <input
                 type="number"
                 className={`card-field cvv ${errors.cvv ? "error" : ""}`}
@@ -128,7 +130,7 @@ const PrepaidCard = ({ currentStep }) => {
             </div>
           </div>
           <button type="submit" className="look">
-            Look Up Card
+            {t("Look Up Card")}
           </button>
         </form>
       </div>
