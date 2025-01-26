@@ -132,9 +132,6 @@ const Contact = ({ currentStep }) => {
         <br />
         {/* Display success or error messages */}
       </div>
-      <br />
-      <br />
-      <br />
     </div>
   );
 };
